@@ -163,8 +163,8 @@ def eval_graphite_nodularity():
 if __name__ == '__main__':
     uploaded_files = st.file_uploader(label='画像ファイル', type=['png', 'jpeg', 'jpg'], accept_multiple_files=True)
     pic_width_scale = st.number_input("画像の幅（μm）", min_value=1, max_value=None, format=None, value=1420)
-    min_grain_length = st.number_input("評価する黒鉛のサイズ（μm）", min_value=1, max_value=None, format='%f', value=10)
-    min_grainsize = pic_width_scale / min_grain_length
+    min_grain_length = st.number_input("評価する黒鉛のサイズ（μm）", min_value=1, max_value=None, format=None, value=10)
+    min_grainsize = min_grain_length / pic_width_scale
 
     if len(uploaded_files) != 0:
         if st.button('評価開始'):
