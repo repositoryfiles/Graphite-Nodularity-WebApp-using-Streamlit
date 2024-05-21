@@ -97,24 +97,24 @@ def eval_graphite_nodularity():
             # ISO法により形状ⅤとⅥの黒鉛を判定し、それらの黒鉛の輪郭を青色で描画
             if marumi >= marumi_ratio:
                 sum_graphite_areas_5and6 += graphite_area
-                cv2.drawContours(img_color_ISO, contours1, i, (0, 0, 255, 255), 2) #青
+                cv2.drawContours(img_color_ISO, contours1, i, (0, 0, 255, 255), -1) #青
 
             # JIS法による形状分類
             if marumi <= 0.2:
                 num_graphite1 += 1
-                cv2.drawContours(img_color_JIS, contours1, i, (255, 0, 0, 255), 2) #赤
+                cv2.drawContours(img_color_JIS, contours1, i, (255, 0, 0, 255), -1) #赤
             if 0.2 < marumi <= 0.4:
                 num_graphite2 += 1
-                cv2.drawContours(img_color_JIS, contours1, i, (128, 0, 128, 255), 2) #紫
+                cv2.drawContours(img_color_JIS, contours1, i, (128, 0, 128, 255), -1) #紫
             if 0.4 < marumi <= 0.7:
                 num_graphite3 += 1
-                cv2.drawContours(img_color_JIS, contours1, i, (0, 255, 0, 255), 2) #緑
+                cv2.drawContours(img_color_JIS, contours1, i, (0, 255, 0, 255), -1) #緑
             if 0.7 < marumi <= 0.8:
                 num_graphite4 += 1
-                cv2.drawContours(img_color_JIS, contours1, i, (0, 255, 255, 255), 2) #水色
+                cv2.drawContours(img_color_JIS, contours1, i, (0, 255, 255, 255), -1) #水色
             if 0.8 < marumi:
                 num_graphite5 += 1
-                cv2.drawContours(img_color_JIS, contours1, i, (0, 0,255, 255), 2) #青
+                cv2.drawContours(img_color_JIS, contours1, i, (0, 0,255, 255), -1) #青
 
         # 球状化率（ISO法）
         nodularity_ISO.append(sum_graphite_areas_5and6 / sum_graphite_areas * 100)
@@ -169,4 +169,3 @@ if __name__ == '__main__':
     if len(uploaded_files) != 0:
         if st.button('評価開始'):
             eval_graphite_nodularity()
-
