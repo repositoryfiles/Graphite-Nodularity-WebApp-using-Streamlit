@@ -136,11 +136,11 @@ def eval_graphite_nodularity():
         img_color_ISO_BGR = cv2.cvtColor(img_color_ISO, cv2.COLOR_RGB2BGR)
         img_color_JIS_BGR = cv2.cvtColor(img_color_JIS, cv2.COLOR_RGB2BGR)
 
-        if os.access(get_user_download_folder(), os.R_OK):
+        if os.access(get_user_download_folder(), os.W_OK):
             cv2.imwrite(result_ISO_filename, img_color_ISO_BGR)
         else:
             st.write("フォルダへのアクセス不能です")
-        if os.access(get_user_download_folder(), os.R_OK):
+        if os.access(get_user_download_folder(), os.W_OK):
             cv2.imwrite(result_JIS_filename, img_color_JIS_BGR)
         else:
             st.write("フォルダへのアクセス不能です")
@@ -160,7 +160,7 @@ def eval_graphite_nodularity():
 
     st.write(get_user_download_folder())
     
-    if os.access(get_user_download_folder(), os.R_OK):
+    if os.access(get_user_download_folder(), os.W_OK):
         with open(output_file, mode='w') as f1:
             print("最小黒鉛サイズ, {:.4f}".format(min_grainsize), file = f1)
             print("丸み係数のしきい値, {:.3f}".format(marumi_ratio), file = f1)
