@@ -151,13 +151,16 @@ def eval_graphite_nodularity():
     now = datetime.datetime.now()
     output_file = get_user_download_folder() + '/nodularity_{0:%Y%m%d%H%M}'.format(now) + ".csv"
 
-    with open(output_file, mode='w') as f1:
-        print("最小黒鉛サイズ, {:.4f}".format(min_grainsize), file = f1)
-        print("丸み係数のしきい値, {:.3f}".format(marumi_ratio), file = f1)
-        print("画像処理と出力画像の幅, {}".format(pic_width), file = f1)
-        print("ファイル名, 球状化率_ISO法(%), 球状化率_JIS法(%)", file = f1)
-        for i in range(len(uploaded_files)):
-            print("{}, {:.2f}, {:.2f}" .format(uploaded_files[i].name, nodularity_ISO[i], nodularity_JIS[i]), file = f1)
+    if os.access(output_file, os.R_OK):
+        with open(output_file, mode='w') as f1:
+            print("最小黒鉛サイズ, {:.4f}".format(min_grainsize), file = f1)
+            print("丸み係数のしきい値, {:.3f}".format(marumi_ratio), file = f1)
+            print("画像処理と出力画像の幅, {}".format(pic_width), file = f1)
+            print("ファイル名, 球状化率_ISO法(%), 球状化率_JIS法(%)", file = f1)
+            for i in range(len(uploaded_files)):
+                print("{}, {:.2f}, {:.2f}" .format(uploaded_files[i].name, nodularity_ISO[i], nodularity_JIS[i]), file = f1)
+    else:
+        print("ファイルに読み取り権限がありません")
 
 
 if __name__ == '__main__':
