@@ -144,7 +144,7 @@ def eval_graphite_nodularity():
             cv2.imwrite(result_JIS_filename, img_color_JIS_BGR)
         else:
             st.write("ファイルに読み取り権限がありません")
-0
+
     # 球状化率などのデータ画面表示
     st.write("最小黒鉛サイズ（評価に用いる黒鉛の最小長さ÷画像の幅）, {:.4f}".format(min_grainsize))
     st.write("丸み係数のしきい値, {:.3f}".format(marumi_ratio))
