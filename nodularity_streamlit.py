@@ -138,11 +138,11 @@ def eval_graphite_nodularity():
 
         if os.access(result_ISO_filename, os.R_OK):
             cv2.imwrite(result_ISO_filename, img_color_ISO_BGR)
-        else
+        else:
             st.write("ファイルに読み取り権限がありません")
         if os.access(result_JIS_filename, os.R_OK):
             cv2.imwrite(result_JIS_filename, img_color_JIS_BGR)
-        else
+        else:
             st.write("ファイルに読み取り権限がありません")
 0
     # 球状化率などのデータ画面表示
