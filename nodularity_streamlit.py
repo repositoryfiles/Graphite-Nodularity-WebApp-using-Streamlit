@@ -136,14 +136,15 @@ def eval_graphite_nodularity():
         img_color_ISO_BGR = cv2.cvtColor(img_color_ISO, cv2.COLOR_RGB2BGR)
         img_color_JIS_BGR = cv2.cvtColor(img_color_JIS, cv2.COLOR_RGB2BGR)
 
-        if os.access(result_ISO_filename, os.R_OK):
+        if os.access(get_user_download_folder(), os.R_OK):
             cv2.imwrite(result_ISO_filename, img_color_ISO_BGR)
         else:
-            st.write("ファイルに読み取り権限がありません")
-        if os.access(result_JIS_filename, os.R_OK):
+            st.write("フォルダへのアクセス不能です")
+        if os.access(get_user_download_folder(), os.R_OK):
             cv2.imwrite(result_JIS_filename, img_color_JIS_BGR)
         else:
-            st.write("ファイルに読み取り権限がありません")
+            st.write("フォルダへのアクセス不能です")
+
 
     # 球状化率などのデータ画面表示
     st.write("最小黒鉛サイズ（評価に用いる黒鉛の最小長さ÷画像の幅）, {:.4f}".format(min_grainsize))
@@ -157,7 +158,7 @@ def eval_graphite_nodularity():
     now = datetime.datetime.now()
     output_file = get_user_download_folder() + '/nodularity_{0:%Y%m%d%H%M}'.format(now) + ".csv"
 
-    if os.access(output_file, os.R_OK):
+    if os.access(get_user_download_folder(), os.R_OK):
         with open(output_file, mode='w') as f1:
             print("最小黒鉛サイズ, {:.4f}".format(min_grainsize), file = f1)
             print("丸み係数のしきい値, {:.3f}".format(marumi_ratio), file = f1)
@@ -166,7 +167,7 @@ def eval_graphite_nodularity():
             for i in range(len(uploaded_files)):
                 print("{}, {:.2f}, {:.2f}" .format(uploaded_files[i].name, nodularity_ISO[i], nodularity_JIS[i]), file = f1)
     else:
-        st.write("ファイルに読み取り権限がありません")
+        st.write("フォルダへのアクセス不能です")
 
 
 if __name__ == '__main__':
