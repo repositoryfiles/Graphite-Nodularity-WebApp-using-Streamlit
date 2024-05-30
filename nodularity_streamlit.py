@@ -158,6 +158,8 @@ def eval_graphite_nodularity():
     now = datetime.datetime.now()
     output_file = get_user_download_folder() + '/nodularity_{0:%Y%m%d%H%M}'.format(now) + ".csv"
 
+    st.write(get_user_download_folder())
+    
     if os.access(get_user_download_folder(), os.R_OK):
         with open(output_file, mode='w') as f1:
             print("最小黒鉛サイズ, {:.4f}".format(min_grainsize), file = f1)
