@@ -54,7 +54,7 @@ streamlit run c:/Python/Nodularity_streamlit.py
 
 # 開発環境
 - Windows11
-- OpenCV 4.9.0
+- OpenCV 4.10.0
 - streamlit 1.34.0
 
 詳しくは requirements.txt を参照ください。
